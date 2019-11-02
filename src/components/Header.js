@@ -4,7 +4,7 @@ import { AppBar, Toolbar } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import Link from '@material-ui/core/Link';
 
-// TODO: Heaer Styles
+// TODO: Header Styles
 const styles = theme => ({
   title: {
     fontSize: 24
@@ -15,6 +15,7 @@ const styles = theme => ({
   }
 });
 
+// TODO: Main
 const Header = props => {
   const { classes } = props;
 
