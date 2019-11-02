@@ -4,4 +4,6 @@
 
 React, Material-ui, axios
 
-### Home Design
+## Home Design
+
+<img src="https://github.com/geonhwiii/ArtistsProject-client/blob/master/img/mainScreen.png?raw=true" width="300" height="600">
