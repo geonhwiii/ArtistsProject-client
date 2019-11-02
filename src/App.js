@@ -1,8 +1,16 @@
 import React from 'react';
-import './App.css';
+import Header from './components/Header';
+import Section from './components/Section';
+import Copyright from './components/CopyRight';
 
 function App() {
-  return <div>ARTISTS CARD</div>;
+  return (
+    <div>
+      <Header />
+      <Section />
+      <Copyright />
+    </div>
+  );
 }
 
 export default App;
