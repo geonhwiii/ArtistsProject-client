@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const DetailSection = ({ tracks }) => {
+const DetailSection = ({ tracks, handleClick }) => {
   const classes = useStyles();
   if (!tracks) return <div>Loading...</div>;
   return (
@@ -32,9 +32,14 @@ const DetailSection = ({ tracks }) => {
       <CssBaseline />
       <List className={classes.list}>
         {tracks.map((track, i) => {
-          const { id, track_title, track_artist, track_url, playtime } = track;
+          const { id, track_title, track_artist, track_url } = track;
           return (
-            <ListItem key={id} dense button>
+            <ListItem
+              key={id}
+              dense
+              button
+              onClick={() => handleClick(track_url)}
+            >
               <Typography
                 className={classes.trackOrder}
                 component='p'
@@ -51,7 +56,11 @@ const DetailSection = ({ tracks }) => {
               />
 
               <ListItemSecondaryAction>
-                <IconButton edge='end' aria-label='comments'>
+                <IconButton
+                  edge='end'
+                  aria-label='comments'
+                  onClick={() => handleClick(track_url)}
+                >
                   <PlayCircleOutlineIcon />
                 </IconButton>
               </ListItemSecondaryAction>
