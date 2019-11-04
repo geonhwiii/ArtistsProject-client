@@ -20,7 +20,7 @@ const Header = props => {
   const { classes } = props;
 
   return (
-    <div>
+    <>
       <AppBar position='fixed'>
         <Toolbar className={classes.toolbar}>
           <Link
@@ -34,7 +34,7 @@ const Header = props => {
           </Link>
         </Toolbar>
       </AppBar>
-    </div>
+    </>
   );
 };
 
