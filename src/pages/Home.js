@@ -28,10 +28,10 @@ const Home = () => {
   if (!albums.length) return <div>Loading...</div>;
 
   return (
-    <div>
+    <>
       <Section albums={albums} />
       <Copyright />
-    </div>
+    </>
   );
 };
 
