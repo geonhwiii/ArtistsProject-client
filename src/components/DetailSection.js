@@ -6,7 +6,9 @@ import {
   ListItemText,
   ListItemSecondaryAction,
   IconButton,
-  Container
+  Container,
+  Typography,
+  CssBaseline
 } from '@material-ui/core';
 import PlayCircleOutlineIcon from '@material-ui/icons/PlayCircleOutline';
 const useStyles = makeStyles(theme => ({
@@ -14,28 +16,48 @@ const useStyles = makeStyles(theme => ({
     width: '100%',
     marginTop: theme.spacing(2),
     padding: theme.spacing(2),
-    maxWidth: 500
+    maxWidth: 550
   },
-  list: {}
+  trackOrder: {
+    width: 8,
+    marginRight: theme.spacing(3)
+  }
 }));
 
-const DetailSection = () => {
+const DetailSection = ({ tracks }) => {
   const classes = useStyles();
-
+  if (!tracks) return <div>Loading...</div>;
   return (
     <Container className={classes.root} align='center'>
+      <CssBaseline />
       <List className={classes.list}>
-        {[0, 1, 2, 3].map(val => (
-          <ListItem key={val} dense button>
-            <ListItemText id={val} primary={`PRIMARY`} />
-            <ListItemText id={val} secondary={`ASH ISLAND`} />
-            <ListItemSecondaryAction>
-              <IconButton edge='end' aria-label='comments'>
-                <PlayCircleOutlineIcon />
-              </IconButton>
-            </ListItemSecondaryAction>
-          </ListItem>
-        ))}
+        {tracks.map((track, i) => {
+          const { id, track_title, track_artist, track_url, playtime } = track;
+          return (
+            <ListItem key={id} dense button>
+              <Typography
+                className={classes.trackOrder}
+                component='p'
+                variant='subtitle1'
+                color='textSecondary'
+                id={id}
+              >
+                {i + 1}
+              </Typography>
+              <ListItemText
+                id={id}
+                primary={track_title}
+                secondary={track_artist}
+              />
+
+              <ListItemSecondaryAction>
+                <IconButton edge='end' aria-label='comments'>
+                  <PlayCircleOutlineIcon />
+                </IconButton>
+              </ListItemSecondaryAction>
+            </ListItem>
+          );
+        })}
       </List>
     </Container>
   );

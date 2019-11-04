@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Section from '../components/Section';
 import Copyright from '../components/CopyRight';
+import { PREFIX_URL } from '../util/util';
 
 const Home = () => {
   const [albums, setAlbums] = useState([]);
@@ -14,7 +15,7 @@ const Home = () => {
   // TODO: Fetch Albums Data
   const fetchAlbums = async () => {
     try {
-      const response = await axios.get('http://13.125.107.126:8000/api/album');
+      const response = await axios.get(`${PREFIX_URL}/api/album`);
       setAlbums(response.data);
       return;
     } catch (err) {

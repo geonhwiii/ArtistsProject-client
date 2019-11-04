@@ -19,9 +19,18 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const DetailAlbum = () => {
+const DetailAlbum = ({ data }) => {
   const classes = useStyles();
-
+  const {
+    id,
+    album_title,
+    album_artist,
+    album_coverImg,
+    genre,
+    company,
+    quality,
+    releaseDate
+  } = data;
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
@@ -31,50 +40,33 @@ const DetailAlbum = () => {
               <img
                 className={classes.img}
                 alt='trackImage'
-                src='https://image.bugsm.co.kr/album/images/original/202799/20279972.jpg?version=undefined'
+                src={album_coverImg}
               />
             </Grid>
             <Grid item xs={12} container direction='row' spacing={1}>
               <Grid item xs={1}></Grid>
               <Grid item xs={3}>
-                <Typography gutterBottom variant='subtitle1'>
-                  아티스트
-                </Typography>
-                <Typography gutterBottom variant='subtitle1'>
-                  앨범명
-                </Typography>
-                <Typography gutterBottom variant='subtitle1'>
-                  장르
-                </Typography>
-                <Typography gutterBottom variant='subtitle1'>
-                  발매일
-                </Typography>
-                <Typography gutterBottom variant='subtitle1'>
-                  기획사
-                </Typography>
-                <Typography gutterBottom variant='subtitle1'>
-                  음질
-                </Typography>
+                {['아티스트', '앨범명', '장르', '발매일', '기획사', '음질'].map(
+                  val => (
+                    <Typography key={id + val} gutterBottom variant='subtitle1'>
+                      {val}
+                    </Typography>
+                  )
+                )}
               </Grid>
               <Grid item xs>
-                <Typography gutterBottom variant='subtitle1'>
-                  첸
-                </Typography>
-                <Typography gutterBottom variant='subtitle1'>
-                  사랑하는 그대에게
-                </Typography>
-                <Typography gutterBottom variant='subtitle1'>
-                  발라드
-                </Typography>
-                <Typography gutterBottom variant='subtitle1'>
-                  2019.10.01
-                </Typography>
-                <Typography gutterBottom variant='subtitle1'>
-                  SM ENTERTAINMENT
-                </Typography>
-                <Typography gutterBottom variant='subtitle1'>
-                  FLAC 16bit
-                </Typography>
+                {[
+                  album_title,
+                  album_artist,
+                  genre,
+                  releaseDate,
+                  company,
+                  quality
+                ].map(val => (
+                  <Typography key={id + val} gutterBottom variant='subtitle1'>
+                    {val}
+                  </Typography>
+                ))}
               </Grid>
             </Grid>
           </Grid>
