@@ -5,12 +5,9 @@ import DetailSection from '../components/DetailSection';
 import DetailAlbum from '../components/DetailAlbum';
 import Copyright from '../components/CopyRight';
 import { PREFIX_URL } from '../util/util';
-import Player from '../components/Player';
 
-const Detail = ({ match }) => {
+const Detail = ({ match, setTrackUrl, setHidePlayer }) => {
   const [data, setData] = useState(null);
-  const [trackUrl, setTrackUrl] = useState('');
-  const [hidePlayer, setHidePlayer] = useState(true);
   const { id } = match.params;
 
   // TODO: Life Cycle Method
@@ -38,11 +35,6 @@ const Detail = ({ match }) => {
     <>
       <DetailAlbum data={data} />
       <DetailSection tracks={data.Tracks} handleClick={selectTrack} />
-      <Player
-        url={trackUrl}
-        hidePlayer={hidePlayer}
-        setHidePlayer={setHidePlayer}
-      />
       <Copyright />
     </>
   );
